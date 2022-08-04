@@ -19,6 +19,7 @@
 		42F6C190289AB75A00FC3295 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F6C18F289AB75A00FC3295 /* MessageModel.swift */; };
 		42F6C192289C1C3C00FC3295 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42F6C191289C1C3C00FC3295 /* GoogleService-Info.plist */; };
 		42F6C195289C1CAD00FC3295 /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F6C194289C1CAD00FC3295 /* ChatRow.swift */; };
+		42F6C197289C64B600FC3295 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F6C196289C64B600FC3295 /* ChatBubble.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		42F6C18F289AB75A00FC3295 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		42F6C191289C1C3C00FC3295 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		42F6C194289C1CAD00FC3295 /* ChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
+		42F6C196289C64B600FC3295 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				42F6C194289C1CAD00FC3295 /* ChatRow.swift */,
+				42F6C196289C64B600FC3295 /* ChatBubble.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				42F6C18C289AB60900FC3295 /* Home.swift in Sources */,
 				42F6C195289C1CAD00FC3295 /* ChatRow.swift in Sources */,
 				42696119289A7B520031418B /* iChatApp.swift in Sources */,
+				42F6C197289C64B600FC3295 /* ChatBubble.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
