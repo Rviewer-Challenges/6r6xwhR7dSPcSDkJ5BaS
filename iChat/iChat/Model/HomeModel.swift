@@ -11,11 +11,13 @@ import SwiftUI
 class HomeModel: ObservableObject {
     
     @Published var messages: [MessageModel] = []
+    @Published var inputText: String = ""
+    
     @AppStorage("current_user") var user = ""
     let ref = Firestore.firestore()
     
     init() {
-        fetchMessages()
+        readMessages()
     }
     
     func onAppear() {
@@ -62,7 +64,7 @@ class HomeModel: ObservableObject {
 }
 
 extension HomeModel {
-    func fetchMessages() {
+    func readMessages() {
         ref.collection("Messages").addSnapshotListener { snap, error in
             
             if let error = error {
@@ -86,6 +88,23 @@ extension HomeModel {
                     }
                 }
             }
+        }
+    }
+    
+    func writeMessages() {
+        let data = MessageModel(user: user, message: inputText, timestamp: Date())
+        
+        do {
+            let _ = try ref.collection("Messages").addDocument(from: data) { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                self.inputText = ""
+            }
+        } catch {
+            
         }
     }
 }

@@ -34,7 +34,7 @@ struct Home: View {
                 
                 if homeModel.inputText != "" {
                     Button {
-                        
+                        homeModel.writeMessages()
                     } label: {
                         Image(systemName: "paperplane.fill")
                             .font(.system(size: 22))
