@@ -7,16 +7,54 @@
 
 import SwiftUI
 
-struct ChatBubble: Shape {
-    var myMessage: Bool
+enum BubbleTail {
+
+    case left
+    case right
     
-    func path(in rect: CGRect) -> Path {
-        
-        let path = UIBezierPath(roundedRect: rect,
-                                byRoundingCorners: [.topLeft,
-                                                    .topRight,
-                                                    myMessage ? .bottomLeft : .bottomRight],
-                                cornerRadii: CGSize(width: 16, height: 16))
-        return Path(path.cgPath)
+    var alignment: Alignment {
+        switch self {
+        case .left:
+            return .bottomLeading
+        case .right:
+            return .bottomTrailing
+        }
+    }
+    
+    var image: String {
+        switch self {
+        case .left:
+            return "incomingTail"
+        case .right:
+            return "outgoingTail"
+        }
+    }
+}
+
+struct ChatBubble: View {
+    var color = Color.blue
+    var text: String
+    var tail: BubbleTail = .left
+    
+    var body: some View {
+        ZStack(alignment: tail.alignment) {
+            Image(tail.image)
+                .renderingMode(.template)
+                .foregroundColor(.blue)
+                .padding(EdgeInsets(top: 0, leading: -5, bottom: -2, trailing: 0))
+            Text(text)
+                .padding()
+        }
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(color)
+        )
+    }
+}
+
+struct ChatBubble_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatBubble(text: "Hola que tal todosss")
+            .preferredColorScheme(.dark)
     }
 }

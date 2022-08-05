@@ -24,12 +24,7 @@ struct ChatRow: View {
             
             VStack(alignment: chatData.user == user ? .trailing : .leading, spacing: 5) {
                 
-                Text(chatData.message)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue.opacity(0.5))
-                    .clipShape(ChatBubble(myMessage: chatData.user == user))
+                ChatBubble(text: chatData.message, tail: chatData.user == user ? .right : .left)
                 
                 Text(chatData.timestamp, style: .time)
                     .font(.caption2)
