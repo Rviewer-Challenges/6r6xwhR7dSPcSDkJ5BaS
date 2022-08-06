@@ -65,7 +65,7 @@ class HomeModel: ObservableObject {
 
 extension HomeModel {
     func readMessages() {
-        ref.collection("Messages").addSnapshotListener { snap, error in
+        ref.collection("Messages").order(by: "timestamp").addSnapshotListener { snap, error in
             
             if let error = error {
                 print(error.localizedDescription)
