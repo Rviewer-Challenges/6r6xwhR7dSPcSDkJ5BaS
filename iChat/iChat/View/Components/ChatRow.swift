@@ -56,5 +56,11 @@ struct NickName: View {
             .frame(width: 50, height: 50)
             .background(name == user ? .blue.opacity(0.5) : .green.opacity(0.5))
             .clipShape(Circle())
+            //Menu flotante al mantener pulsado el nick
+            .contentShape(Circle())
+            .contextMenu {
+                Text(name)
+                    .fontWeight(.bold)
+            }
     }
 }
