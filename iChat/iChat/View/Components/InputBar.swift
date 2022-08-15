@@ -9,14 +9,16 @@ import SwiftUI
 
 struct InputBar: View {
     @Binding var inputText: String
-    @State var isShowingPicker = false
-    @State var selectedImage: UIImage?
-    var action: (() -> Void)?
+    //@State var isShowingPicker = false
+    //@State var selectedImage: UIImage?
+    var sendText: (() -> Void)?
+    var openPhoto: (() -> Void)?
     
     var body: some View {
         VStack {
             HStack(spacing: 8) {
                 Button {
+                    openPhoto?()
                     
                 } label: {
                     Image(systemName: "paperclip")
@@ -30,10 +32,10 @@ struct InputBar: View {
                     .frame(height: 40)
                     .background(Color.primary.opacity(0.05))
                     .clipShape(Capsule())
-                
+                                
                 Button {
                     if inputText != "" {
-                        action?()
+                        sendText?()
                     }
                     
                 } label: {
@@ -60,5 +62,7 @@ struct InputBar_Previews: PreviewProvider {
             InputBar(inputText: .constant("Hola"))
                 .preferredColorScheme(.dark)
         }
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 }

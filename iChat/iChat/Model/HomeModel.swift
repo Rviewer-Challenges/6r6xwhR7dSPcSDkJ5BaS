@@ -6,12 +6,14 @@
 //
 
 import FirebaseFirestore
+import FirebaseStorage
 import SwiftUI
 
 class HomeModel: ObservableObject {
     
     @Published var messages: [MessageModel] = []
     @Published var inputText: String = ""
+    @Published var selectedImage: UIImage?
     
     @AppStorage("current_user") var user = ""
     let ref = Firestore.firestore()
@@ -106,5 +108,41 @@ extension HomeModel {
         } catch {
             
         }
+    }
+    
+    func uploadPhoto() {
+        //Make sure that selected image property isn´t nil
+        
+        guard selectedImage != nil else {
+            return
+        }
+        
+        //Create storage reference
+        let storageRef = Storage.storage().reference()
+        
+        //Turn our image in data
+        let imageData = selectedImage?.jpegData(compressionQuality: 0.8)
+        
+        //Check imageData is not nil
+        guard let data = imageData else {
+            return
+        }
+        
+        //Specific the file path and name
+        let fileRef = storageRef.child("images/\(UUID().uuidString)")
+        
+        // Upload that data
+        let uploadTask = fileRef.putData(data, metadata: nil) { metadata, error in
+            
+            if let error = error  {
+                print("Error \(error)")
+            }
+            
+            if let _ = metadata {
+                print("Ha ido todo bien")
+            }
+        }
+        
+        
     }
 }

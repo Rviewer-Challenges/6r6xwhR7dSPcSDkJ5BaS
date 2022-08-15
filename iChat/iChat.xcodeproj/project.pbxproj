@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		420E573928A3D4FE00B5469D /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420E573828A3D4FE00B5469D /* UIApplication+Extensions.swift */; };
 		42696119289A7B520031418B /* iChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42696118289A7B520031418B /* iChatApp.swift */; };
 		4269611B289A7B520031418B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4269611A289A7B520031418B /* ContentView.swift */; };
 		4269611D289A7B540031418B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4269611C289A7B540031418B /* Assets.xcassets */; };
 		42696120289A7B540031418B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4269611F289A7B540031418B /* Preview Assets.xcassets */; };
+		427F353328A27D60001ECAA5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F353228A27D60001ECAA5 /* ImagePicker.swift */; };
+		427F353628A2A82A001ECAA5 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 427F353528A2A82A001ECAA5 /* FirebaseStorage */; };
 		42F6C184289AA9C700FC3295 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 42F6C183289AA9C700FC3295 /* FirebaseAuth */; };
 		42F6C186289AA9C700FC3295 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 42F6C185289AA9C700FC3295 /* FirebaseFirestore */; };
 		42F6C188289AA9C700FC3295 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42F6C187289AA9C700FC3295 /* FirebaseFirestoreSwift */; };
@@ -25,12 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		420E573828A3D4FE00B5469D /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		42696115289A7B520031418B /* iChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42696118289A7B520031418B /* iChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iChatApp.swift; sourceTree = "<group>"; };
 		4269611A289A7B520031418B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4269611C289A7B540031418B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4269611F289A7B540031418B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		427F352328A1A2ED001ECAA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		427F353228A27D60001ECAA5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		42F6C18B289AB60900FC3295 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		42F6C18D289AB74E00FC3295 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		42F6C18F289AB75A00FC3295 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
@@ -47,6 +51,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42F6C184289AA9C700FC3295 /* FirebaseAuth in Frameworks */,
+				427F353628A2A82A001ECAA5 /* FirebaseStorage in Frameworks */,
 				42F6C186289AA9C700FC3295 /* FirebaseFirestore in Frameworks */,
 				42F6C188289AA9C700FC3295 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -60,6 +65,7 @@
 			children = (
 				42696117289A7B520031418B /* iChat */,
 				42696116289A7B520031418B /* Products */,
+				427F353428A2A82A001ECAA5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,7 +80,6 @@
 		42696117289A7B520031418B /* iChat */ = {
 			isa = PBXGroup;
 			children = (
-				427F352328A1A2ED001ECAA5 /* Info.plist */,
 				42F6C198289F3A8600FC3295 /* Extensions */,
 				42F6C191289C1C3C00FC3295 /* GoogleService-Info.plist */,
 				42F6C18A289AB5D600FC3295 /* Model */,
@@ -93,6 +98,13 @@
 				4269611F289A7B540031418B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		427F353428A2A82A001ECAA5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		42F6C189289AB5D000FC3295 /* View */ = {
@@ -119,6 +131,7 @@
 				42F6C194289C1CAD00FC3295 /* ChatRow.swift */,
 				42F6C196289C64B600FC3295 /* ChatBubble.swift */,
 				42F6C19B289F3D3100FC3295 /* InputBar.swift */,
+				427F353228A27D60001ECAA5 /* ImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -127,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				42F6C199289F3A9B00FC3295 /* Color+Extensions.swift */,
+				420E573828A3D4FE00B5469D /* UIApplication+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -151,6 +165,7 @@
 				42F6C183289AA9C700FC3295 /* FirebaseAuth */,
 				42F6C185289AA9C700FC3295 /* FirebaseFirestore */,
 				42F6C187289AA9C700FC3295 /* FirebaseFirestoreSwift */,
+				427F353528A2A82A001ECAA5 /* FirebaseStorage */,
 			);
 			productName = iChat;
 			productReference = 42696115289A7B520031418B /* iChat.app */;
@@ -217,6 +232,8 @@
 				42F6C195289C1CAD00FC3295 /* ChatRow.swift in Sources */,
 				42696119289A7B520031418B /* iChatApp.swift in Sources */,
 				42F6C197289C64B600FC3295 /* ChatBubble.swift in Sources */,
+				427F353328A27D60001ECAA5 /* ImagePicker.swift in Sources */,
+				420E573928A3D4FE00B5469D /* UIApplication+Extensions.swift in Sources */,
 				42F6C19C289F3D3100FC3295 /* InputBar.swift in Sources */,
 				42F6C19A289F3A9B00FC3295 /* Color+Extensions.swift in Sources */,
 			);
@@ -352,7 +369,6 @@
 				DEVELOPMENT_TEAM = WRGH8XLUL2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iChat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -382,7 +398,6 @@
 				DEVELOPMENT_TEAM = WRGH8XLUL2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iChat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -436,6 +451,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		427F353528A2A82A001ECAA5 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42F6C182289AA9C700FC3295 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		42F6C183289AA9C700FC3295 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 42F6C182289AA9C700FC3295 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -23,6 +23,9 @@ struct iChatApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    UIApplication.shared.addTapGestureRecognizer()
+                }
         }
     }
 }

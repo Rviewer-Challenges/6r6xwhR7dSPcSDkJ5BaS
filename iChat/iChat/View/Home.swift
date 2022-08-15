@@ -10,6 +10,9 @@ import SwiftUI
 struct Home: View {
     @ObservedObject var homeModel = HomeModel()
     @State var scrolled = false
+    @State var showingPicker = false
+    @State var selectedImage: UIImage?
+    
     var body: some View {
         VStack(spacing: 0) {
             
@@ -42,8 +45,15 @@ struct Home: View {
             }
             
             InputBar(inputText: $homeModel.inputText) {
+//                homeModel.selectedImage = selectedImage
+//                homeModel.uploadPhoto()
                 homeModel.writeMessages()
+            } openPhoto: {
+                showingPicker = true
             }
+        }
+        .sheet(isPresented: $showingPicker) {
+            ImagePicker(selectedImage: $selectedImage)
         }
         .onAppear(perform: {
             homeModel.onAppear()
