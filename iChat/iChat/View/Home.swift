@@ -14,49 +14,85 @@ struct Home: View {
     @State var selectedImage: UIImage?
     
     var body: some View {
-        VStack(spacing: 0) {
-            
-            //NavigationBar
-            
-            ScrollViewReader { reader in
-                ScrollView {
-                    VStack(spacing: 16) {
-                        ForEach(homeModel.messages) { message in
-                            ChatRow(chatData: message)
-                                .onAppear {
-                                    //First time scrolling
-                                    if message.id == self.homeModel.messages.last?.id && !scrolled {
-                                        reader.scrollTo(homeModel.messages.last?.id, anchor: .bottom)
-                                        scrolled = true
+        ZStack {
+            VStack(spacing: 0) {
+                
+                //NavigationBar
+                
+                ScrollViewReader { reader in
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            ForEach(homeModel.messages) { message in
+                                ChatRow(chatData: message)
+                                    .onAppear {
+                                        //First time scrolling
+                                        if message.id == self.homeModel.messages.last?.id && !scrolled {
+                                            reader.scrollTo(homeModel.messages.last?.id, anchor: .bottom)
+                                            scrolled = true
+                                        }
                                     }
-                                }
-                        }
-                        .onChange(of: homeModel.messages) { newValue in
-                            //Cada vez que un usuario escribe un mensaje hace scroll hacia abajo
-                            //TODO: Hacer que solo haga scroll cuando el usuario envia mensajes, y que indique si hay msj disponibles de otros usuarios para hacer scroll
-                            //TODO: Vaciar el text field sin esperar a que se envie el mensaje pues tarda un poquito en borrarlo.
-                            
-                            reader.scrollTo(homeModel.messages.last?.id, anchor: .bottom)
+                            }
+                            .onChange(of: homeModel.messages) { newValue in
+                                //Cada vez que un usuario escribe un mensaje hace scroll hacia abajo
+                                //TODO: Hacer que solo haga scroll cuando el usuario envia mensajes, y que indique si hay msj disponibles de otros usuarios para hacer scroll
+                                //TODO: Vaciar el text field sin esperar a que se envie el mensaje pues tarda un poquito en borrarlo.
+                                
+                                reader.scrollTo(homeModel.messages.last?.id, anchor: .bottom)
+                            }
                         }
                     }
+                    .background(Color.backgroundColor)
+                    
                 }
-                .background(Color.backgroundColor)
+                
+                InputBar(inputText: $homeModel.inputText) {
+    //                homeModel.selectedImage = selectedImage
+    //                homeModel.uploadPhoto()
+                    homeModel.writeMessages()
+                } openPhoto: {
+                    withAnimation {
+                        showingPicker = true
+                    }
+                }
                 
             }
+    //        .sheet(isPresented: $showingPicker) {
+    //            //ImagePicker(selectedImage: $selectedImage)
+    //        }
+            .onAppear(perform: {
+                homeModel.onAppear()
+            })
             
-            InputBar(inputText: $homeModel.inputText) {
-//                homeModel.selectedImage = selectedImage
-//                homeModel.uploadPhoto()
-                homeModel.writeMessages()
-            } openPhoto: {
-                showingPicker = true
+            ZStack {
+                if showingPicker {
+                    BottomSheet {
+                        showingPicker.toggle()
+                    }
+                    .transition(.move(edge: .bottom))
+                }
             }
+            .zIndex(2.0)
+            
+//            BottomSheet(showPicker: $ShowPicker)
+            //  .offset(y: showPicker ? 0 : maxHiegh)
+//            .transition(.move(edge: .bottom))
+            
+            
+            //BottomSheet(showPicker: $showingPicker)
+               
+            
+            
+                //
+                //.transition(.asymmetric(insertion: .scale, removal: .opacity))
+
+            //PickerSheet
         }
-        .sheet(isPresented: $showingPicker) {
-            ImagePicker(selectedImage: $selectedImage)
-        }
-        .onAppear(perform: {
-            homeModel.onAppear()
-        })
     }
+//
+//    @ViewBuilder var PickerSheet: some View {
+//        if showingPicker {
+//        } else {
+//            EmptyView()
+//        }
+//    }
 }
